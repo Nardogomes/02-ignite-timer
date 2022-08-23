@@ -6,7 +6,7 @@ import {
   MinutesAmountInput,
   Separator,
   StartCountdownButton,
-  TaskInput
+  TaskInput,
 } from "./styles";
 
 export function Home() {
@@ -17,14 +17,25 @@ export function Home() {
           <label htmlFor="task">Vou trabalhar em</label>
           <TaskInput
             id="task"
+            list="task-suggestion"
             placeholder="Dê um nome para o seu projeto"
           />
+
+          <datalist id="task-suggestion">
+            <option value="Atividade 1" />
+            <option value="Atividade 2" />
+            <option value="Atividade 3" />
+            <option value="Atividade 4" />
+          </datalist>
 
           <label htmlFor="minutesAmount">durante</label>
           <MinutesAmountInput
             type="number"
             id="minutesAmount"
             placeholder="00"
+            step={5}
+            max={60}
+            min={5}
           />
 
           <span>minutos.</span>
@@ -39,10 +50,10 @@ export function Home() {
         </CountdownContainer>
 
         <StartCountdownButton disabled type="submit">
-          <Play size={24}/>
+          <Play size={24} />
           Começar
         </StartCountdownButton>
       </form>
     </HomeContainer>
-  )
+  );
 }
